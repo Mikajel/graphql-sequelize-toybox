@@ -1,0 +1,83 @@
+input loginInput {
+  email: String!
+  password: String!
+}
+
+input paginationInput {
+  amount: Int!
+  page: Int!
+}
+
+input searchBookLikeInput {
+  pagination: paginationInput!
+  searchString: String!
+}
+
+input createBookInput {
+  year: Int!
+  rating: Int
+  author: String!
+  genre: String
+  name: String!
+}
+
+input updateBookInput {
+  uuid: String!
+  year: Int!
+  rating: Int
+  author: String!
+  genre: String
+  name: String!
+}
+
+input uuidInput {
+  uuid: String!
+}
+
+type loginResponse {
+  email: String!
+  name: String!
+}
+
+type bookHistory {
+  uuid: String!
+  year: Int!
+  rating: Int
+  author: String!
+  genre: String
+  name: String!
+  validTo: String
+  validFrom: String!
+}
+
+type book {
+  uuid: String!
+  year: Int!
+  rating: Int
+  author: String!
+  genre: String
+  name: String!
+}
+
+type bookPage {
+  page: Int!
+  amount: Int!
+  pageCount: Int!
+  books: [book!]!
+}
+
+type Query {
+  getHello: String
+  getBook(input: uuidInput!): book
+  getAllBooks(input: paginationInput!): bookPage
+  searchBookLikeName(input: searchBookLikeInput!): bookPage
+  searchBookLikeAuthor(input: searchBookLikeInput!): bookPage
+  getBookHistory(input: uuidInput!): [bookHistory!]!
+}
+type Mutation {
+  login(input: loginInput!): loginResponse!
+  logout: Boolean!
+  createBook(input: createBookInput!): Boolean!
+  updateBook(input: updateBookInput!): Boolean!
+  deleteBook(input: uuidInput!): Boolean!
+}
