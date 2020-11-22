@@ -9,4 +9,4 @@ matrix:
     - dist: xenial
 
 before_install:
- - docker build -t Mikajel/toybox
+ - docker build -t mikajel/toybox
