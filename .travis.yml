@@ -1,10 +1,13 @@
 services:
  - docker
 
+language: minimal
+
 jobs:
   include:
   - name: prod_image
     env: NODE_ENV=prod
+    dist: bionic
 
 branches:
   only:
