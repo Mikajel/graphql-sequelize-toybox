@@ -1,0 +1,14 @@
+services:
+ - docker
+
+jobs:
+  include:
+  - name: prod_image
+    env: NODE_ENV=prod
+
+branches:
+  only:
+  - master
+
+before_install:
+ - docker build -t mikajel/toybox .
