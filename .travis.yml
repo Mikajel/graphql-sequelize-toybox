@@ -6,7 +6,10 @@ services:
 matrix:
   include:
     - dist: bionic
-    - dist: xenial
+
+branches:
+  only:
+  - master
 
 before_install:
  - docker build -t mikajel/toybox .
