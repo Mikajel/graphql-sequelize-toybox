@@ -3,5 +3,10 @@ sudo: required
 services:
  - docker
 
+matrix:
+  include:
+    - dist: bionic
+    - dist: xenial
+
 before_install:
  - docker build -t Mikajel/toybox
