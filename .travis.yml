@@ -1,0 +1,15 @@
+sudo: required
+
+services:
+ - docker
+
+matrix:
+  include:
+    - dist: bionic
+
+branches:
+  only:
+  - master
+
+before_install:
+ - docker build -t mikajel/toybox .
